@@ -6,12 +6,21 @@ package main
 //      3、求的模后，如何判断是大鱼还是筛网。。。。
 import (
 	"fmt"
-	"strconv"
+	"time"
 )
 
-//func isFishOrNet(time time.Time) string{
-//	time.Unix()
-//}
+func isFishOrNet(newTime time.Time) string {
+	fromTime := time.Date(1900, 1, 1, 0, 0, 0, 0, time.UTC)
+	//subTime:=newTime.Unix()-fromTime.Unix()
+	subTime := newTime.Sub(fromTime).Hours() / 24
+	fmt.Println("相差时间为", subTime, "天")
+	newsubTime := int(subTime) % 5
+	if newsubTime <= 3 {
+		return "大鱼"
+	} else {
+		return "晒网"
+	}
+}
 
 func main() {
 	var (
@@ -26,6 +35,13 @@ func main() {
 	fmt.Printf("请输入日")
 	fmt.Scanln(&day)
 	fmt.Printf("你输入的日期为%v-%v-%v\n", year, month, day)
-	str1 := strconv.Itoa(year) + strconv.Itoa(month) + strconv.Itoa(day)
-	fmt.Printf(str1)
+	nowTime := time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
+	isFish := isFishOrNet(nowTime)
+	if isFish == "大鱼" {
+		fmt.Println("今天是大鱼的日子")
+	} else {
+		fmt.Println("今天是筛网的日子")
+
+	}
+
 }
