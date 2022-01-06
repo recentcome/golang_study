@@ -41,6 +41,18 @@ func maoPao(arr1 []int) []int {
 	return arr2
 }
 
+func findMax(arr []int) (int, int) {
+	max := 0
+	index := 0
+	for i := 0; i < len(arr); i++ {
+		if arr[i] > max {
+			max = arr[i]
+			index = i
+		}
+	}
+	return max, index
+}
+
 //随机生成10个整数（1_100的范围）保存到数组，并倒序打印以及求平均值、最大值、最大值的下标、并查找里面是否含有55
 func main() {
 	//随机生成10个整数，并保存到数组
@@ -54,7 +66,8 @@ func main() {
 	//		max = arr1[i]
 	//	}
 	//}
-	//fmt.Println("最大值为",max)
+	max, i := findMax(arr1)
+	fmt.Println("最大值为", max, "下标为", i)
 
 	arr2 := maoPao(arr1)
 
@@ -63,9 +76,9 @@ func main() {
 	sum := 0.0
 	for i := 0; i < len(arr2); i++ {
 		sum += float64(arr2[i])
-		//if arr2[i] == 55{
-		//	fmt.Println("有55")
-		//}
+		if arr2[i] == 55 {
+			fmt.Println("有55")
+		}
 	}
 	fmt.Println("总值为", sum)
 	fmt.Println("平均值为", sum/(float64(len(arr2))))
