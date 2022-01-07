@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	var countryCapitalMap map[string]string
-	countryCapitalMap = make(map[string]string)
+	//var countryCapitalMap map[string]string
+	countryCapitalMap := make(map[string]string)
 	countryCapitalMap["france"] = "巴黎"
 	countryCapitalMap["Italy"] = "罗马"
 	countryCapitalMap["Japan"] = "东京"
