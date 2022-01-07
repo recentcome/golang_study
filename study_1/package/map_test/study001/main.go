@@ -38,4 +38,13 @@ func main() {
 	} else {
 		fmt.Println("没哟uKey")
 	}
+
+	//遍历map
+	for k, v := range students {
+		fmt.Println(k)
+		for k2, v2 := range v {
+			fmt.Printf("\tk=%v,v=%v\n", k2, v2)
+		}
+		fmt.Println()
+	}
 }
