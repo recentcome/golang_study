@@ -7,5 +7,16 @@ import (
 
 func main() {
 	fmt.Println("这是一个面向对象的实现")
-	utils.NewFamilyAccount().MainMenu()
+	flag := false
+	for {
+		islogin := utils.NewFamilyAccount().Login()
+		if islogin {
+			utils.NewFamilyAccount().MainMenu()
+			flag = true
+		}
+		if flag {
+			break
+		}
+	}
+
 }
