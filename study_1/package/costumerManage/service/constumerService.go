@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"gocode/study_1/package/costumerManage/model"
 )
 
@@ -52,4 +53,25 @@ func (cs *CustomerService) Delete(userId int) bool {
 		return true
 	}
 	return false
+}
+
+//更新客户信息，功能说明，需要用户选择修改的客户编号，-1退出
+//选择客户编号后，展示出该客户的信息，让用户输入对应的字段，若直接回车表示不修改
+//最后提示修改是否完成。
+//1、用户输入客户编号后，返回客户的详细信息。这里可以通过findbyid查询出用户，对用户的信息进行展示即可。
+//2、根据用户的id，前端的输入值保存为一个新的custom，也一起传入，若不存在id，则直接返回,，
+func (cs *CustomerService) Update(userId int, customer model.Customer) bool {
+	index := cs.FindById(userId)
+	fmt.Println("index is", index)
+	if index == -1 {
+		return false
+	} else {
+		fmt.Println(cs.Customers[index])
+		fmt.Println(customer)
+		if cs.Customers[index].Id == customer.Id {
+
+		}
+		cs.Customers[index] = customer
+	}
+	return true
 }
